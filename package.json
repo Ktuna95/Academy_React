@@ -1,0 +1,17 @@
+{
+  "name": "dongwon-react",
+  "version": "1.0.0",
+  "description": "testProject",
+  "main": "index.js",
+  "author": "Dongwon",
+    "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^6.3.0"
+  }
+}
