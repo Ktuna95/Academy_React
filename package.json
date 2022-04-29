@@ -4,7 +4,7 @@
   "description": "testProject",
   "main": "index.js",
   "author": "Dongwon",
-    "scripts": {
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index"
   },
@@ -12,6 +12,8 @@
   "dependencies": {
     "cross-env": "^7.0.3",
     "react-helmet": "^6.1.0",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "sass": "^1.51.0",
+    "styled-components": "^5.3.5"
   }
 }
