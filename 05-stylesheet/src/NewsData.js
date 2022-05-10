@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CssClass = () => {
+const NewsData = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const CssClass = () => {
     );
 };
 
-export default CssClass;
+export default NewsData;
