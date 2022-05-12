@@ -2,8 +2,13 @@ import React from 'react';
 import sea from '../assets/img/sea.jpg';
 
 const MyEffect = () => {
-
+    //이미지의 밝기를 위한 상태 값
     const [myBirghtness, setBirghtness] = React.useState(100);
+
+    //브라우저의 넓이를 의마하는 상태값
+    const [myWidth, setMyWidth] = React.useState(window.innerWidth);
+
+    //사용자 정의 함수
     const onMyResize=()=>{
         console.log('창 사이즈 변경됨 >> ${window.innerWidth}');
         setMyWidth(window.innerWidth);

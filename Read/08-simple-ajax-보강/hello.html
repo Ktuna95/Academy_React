@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="dname" />
+    <input type="text" id="loc" />
+    <button id="btnPost">데이터 저장하기</button>
+
+    <hr />
+    <button id="btnGet">데이터 가져오기</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>dname</th>
+                <th>loc</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.querySelector("#btnPost").addEventListener("click", e => {
+            const dnameValue = document.querySelector("#dname").value;
+            const locValue = document.querySelector("#loc").value;
+
+            (async () => {
+                let json = null;
+
+                try {
+                    // ajax 처리 구현
+                    const response = await axios.post('http://localhost:3001/department', {
+                        dname: dnameValue,
+                        loc: locValue
+                    });
+                    json = response.data;
+                } catch (e) {
+                    // 에러 발생시 처리
+                    alert("AJAX 요청에 실패했습니다.");
+                }
+
+                if (json != null) {
+                    alert("저장되었습니다.");
+                    document.querySelector("tbody").innerHTML = "";
+
+                    const clickEvent = new Event("click");
+                    document.querySelector("#btnGet").dispatchEvent(clickEvent);
+                }
+            })();
+        });
+
+        document.querySelector("#btnGet").addEventListener("click", e => {
+            (async () => {
+                let json = null;
+
+                try {
+                    // ajax 처리 구현
+                    
+                    /**/
+                    // --> http://localhost:3001/department
+                    const response = await axios.get('http://localhost:3001/department');
+                    /*/
+                    // --> http://localhost:3001/department?dname=컴퓨터공학과
+                    const response = await axios.get('http://localhost:3001/department', {
+                        params: {
+                            dname: '컴퓨터공학과'
+                        }
+                    });
+                    /**/
+
+                    // 백엔드에서 가져온 json 전문
+                    //console.log(response.data);
+                    json = response.data;
+                } catch (e) {
+                    // 에러 발생시 처리
+                    alert("AJAX 요청에 실패했습니다.");
+                }
+
+                if (json != null) {
+                    const tbody = document.querySelector("tbody");
+
+                    json.forEach((v, i) => {
+                        const tr = document.createElement("tr");
+
+                        const td1 = document.createElement("td");
+                        td1.innerHTML = v.id;
+
+                        const td2 = document.createElement("td");
+                        td2.innerHTML = v.dname;
+
+                        const td3 = document.createElement("td");
+                        td3.innerHTML = v.loc;
+
+                        tr.appendChild(td1);
+                        tr.appendChild(td2);
+                        tr.appendChild(td3);
+
+                        tbody.appendChild(tr);
+                    });
+                }
+            })();
+        });
+    </script>
+</body>
+</html>

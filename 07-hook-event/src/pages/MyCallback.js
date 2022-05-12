@@ -2,8 +2,9 @@ import React from 'react';
 
 const MyCallback = () => {
     const [myText, setMyText] = React.useState('Hello React');
-    const onInputChange = React.useCallback((e)=>{
-        setMyText(e.currentTarger.value);
+
+    const onInputChange = React.useCallback( (e) => {
+        setMyText(e.currentTarget.value);
     }, []);
 
     return (

@@ -5,7 +5,7 @@ const MyState = () => {
     const [myPoint, setMyPoint] = React.useState(50);
 
     const onMyNameChange = e => {
-        setMyName(e.currentTarger.value);
+        setMyName(e.currentTarget.value);
     };
 
     return (
