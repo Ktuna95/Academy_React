@@ -1,5 +1,5 @@
 {
-  "name": "08-simple-ajax",
+  "name": "09-axios-hooks",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,6 +7,7 @@
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
     "axios": "^0.27.2",
+    "axios-hooks": "^3.0.3",
     "dayjs": "^1.11.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -16,6 +17,7 @@
     "react-scripts": "5.0.1",
     "sass": "^1.51.0",
     "styled-components": "^5.3.5",
+    "styled-components-breakpoints": "^1.1.1",
     "web-vitals": "^2.1.0"
   },
   "scripts": {

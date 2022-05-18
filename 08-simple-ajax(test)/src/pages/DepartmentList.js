@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const DepartmentList = () => {
     //  화면에 표시할 상태값(ajax 연동결과로 받아올 json) -> 초기값을 빈 배열로 정의
-    const [department, setDepartment]=React.useState([]);
+    const [department, setDepartment] = React.useState([]);
     //  검색 키워드
     const [keyword, setKeyword] = React.useState('');
     //  삭제할 항목에 대한 id값을 저장하기 위한 상태값
@@ -20,8 +20,8 @@ const DepartmentList = () => {
             }
         }
 
-        (async ()=>{
-            try{
+        (async () => {
+            try {
                 const response = await axios.get('http://localhost:3001/department', option);
                 setDepartment(response.data);            
             } catch (e) {
@@ -34,7 +34,7 @@ const DepartmentList = () => {
     React.useEffect(()=>{
         if(dropId > -1){
             //배열을 탐색하여 삭제가 요청된 id값을 찾는다.
-            for(let i=0; i<department.length; i++){
+            for(let i = 0; i < department.length; i++){
                 if(department[i].id == dropId){
                     //배열에서 삭제버튼과 일치하는 id값을 갖는 항목을 삭제한 복사본 생성
                     const departmentCopy = department.slice(i, 1);
@@ -44,18 +44,21 @@ const DepartmentList = () => {
                 }
             }
             //백엔드에 데이터가 삭제되었음을 알린다.
-            (async() =>{
+            (async () => {
                 //Ajax를 통한 데이터 삭제 요청
                 try {
                     await axios.delete(`http://localhost:3001/department/${dropId}`);
-                } catch(e){
+                } catch (e) {
                     console.error(e);
-                    alert('Ajax연동 실패');
+                    alert('Ajax 연동 실패');
                 }
-                })();
+            })();
+
+            // 상태변수를 되돌린다
                 setDropId(-1);
             }
         }, [dropId]);
+
         /**검색어 입력 요소에 연결할 참조 변수 */
         const myKeywordInput = React.useRef();
 
@@ -63,10 +66,11 @@ const DepartmentList = () => {
         const onButtonClick = (e) => {
             setKeyword(myKeywordInput.current.value)
         };
+        
         /**삭제하기 버튼이 클릭되었을 때 호출될 이벤트 핸들러 */
-        const onDeleteClick = async (e) =>{
+        const onDeleteClick = async (e) => {
             //클릭된 자기 자신
-            const current = e.currentTarger;
+            const current = e.currentTarget;
             //클릭된 자신에게 숨어 있는 data-id값을 추출
             const id = parseInt(current.dataset.id);
             //삭제 대상임을 알림
