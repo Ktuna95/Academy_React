@@ -11,6 +11,6 @@ const useMountedRef = () =>{
         });
     }, []);
 
-    return useMountedRef;
+    return mountedRef;
 };
 export default useMountedRef;

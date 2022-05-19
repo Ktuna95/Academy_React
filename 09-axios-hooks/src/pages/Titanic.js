@@ -7,28 +7,28 @@ import Table from '../components/Table';
 import useAxios from 'axios-hooks';
 //페이지의 마운트 여부를 확인하기 위한 hook
 import useMountedRef from '../hooks/useMountedRef';
-//import useMountdRef from '../../hook'
+
 /* 성별을 표시하기 위한 텍스트 라벨 */
 const ColorText = styled.span`
     &:before{
-        color:${({sex})=>sex==='male'?'#06f':'#c0c'};
-        content:'${({sex})=>sex==='male'?'남자':'여자'};
-        font-weight:600;
+        color: ${({ sex }) => sex === 'male' ? '#06f' : '#c0c' };
+        content: '${({ sex }) => sex === 'male' ? '남자' : '여자' }';
+        font-weight: 600;
     }
 `;
 //탑승지를 표시하기 위한 텍스트 라벨
 const EmbarkedBox = styled.span`
     &:before{
-        color: ${({embarked})=>embarked==='C'?'#f60':(embarked==='Q'?'#00f':'#990')};
-        content: '${({embarked}) => embarked ==='C'?'세르부르':(embarked==='Q'?'퀸즈타운':'사우샘프턴')}';
+        color: ${({ embarked }) => embarked === 'C' ? '#f60' : (embarked === 'Q' ? '#00f' : '#990')};
+        content: '${({ embarked }) => embarked === 'C' ? '세르부르' : (embarked === 'Q' ? '퀸즈타운' : '사우샘프턴')}';
         font-weight: 600;
     }
 `;
 /**생존여부를 표시하기 위한 텍스트 라벨 */
 const SurvivedBox = styled.span`
     &:before{
-        background-color: ${({survived}) => survived ? '#090':'#e00'};
-        content: '${({survived}) => survived ? '생존' : '사망'};
+        background-color: ${({ survived }) => survived ? '#090' : '#e00'};
+        content: '${({ survived }) => survived ? '생존' : '사망'}';
         color: #fff;
         font-weight: 600;
     }
@@ -50,7 +50,7 @@ const SelectContainer = styled.div`
     }
 `;
 //접속할 백엔드의 url
-const URL = "http://localhost:3000/titanic";
+const URL = "http://localhost:3001/titanic";
 
 const Titanic = () => {
     /*
@@ -75,7 +75,7 @@ const Titanic = () => {
 
         // 드롭다운의 입력값 취득
         const current = e.target;
-        const key= current.name;
+        const key = current.name;
         const value = current[current.selectedIndex].value;
 
         //기존의 상태값을 그대로 복사한 상태에서
@@ -90,14 +90,17 @@ const Titanic = () => {
 
         //hook함수 안에서 다른 상태값을 사용할 경우 해당 상태값을 모니터링 해야한다.
     }, [state]);
+    //useEffect가 함수형 호출에선 호출이안돼
+    //페이지가 최초로 열릴땐 무조건 실행 됨  
     
+    //state상태값이 변경되었을 때 실행될 hook
     React.useEffect(() => {
         //컴포넌트가 화면에 마운트 된 이후에만 동작하도록 한다.
         if (mountedRef.current){
             //상태값 중에서 빈값이 아닌 항목들을 옮겨담는다.
             const params = {};
             for (const key in state) {
-                if (state[key]){
+                if (state[key]) {
                     params[key] = state[key];
                 }
             }
@@ -175,7 +178,7 @@ const Titanic = () => {
                                 <tr key={id}>
                                     <td>{id}</td>
                                     <td>{name}</td>
-                                    <td><ColorText sex={sex}/></td>
+                                    <td><ColorText sex={sex} /></td>
                                     <td>{age}</td>
                                     <td>{sibsp + parch}</td>
                                     <td>{pclass}등석</td>
