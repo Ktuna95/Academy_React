@@ -2,8 +2,8 @@ import React, { memo } from 'react';
 import styled from 'styled-components';
 
 import {useSelector, useDispatch} from 'react-redux';
-import useMountedRef from '../hooks/useMountedRef';
 import { getMovieRank } from '../slices/MovieRankSlice';
+import useMountedRef from '../hooks/useMountedRef';
 
 //로딩바 컴포넌트
 import Spinner from '../components/Spinner';
@@ -13,7 +13,6 @@ import Table from '../components/Table';
 import ErrorView from '../components/ErrorView';
 //그래 표시허기 위한 컴포넌트
 import BarChartView from '../components/BarChartView';
-
 
 //날짜처리 라이브러리
 import dayjs from 'dayjs';

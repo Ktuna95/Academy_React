@@ -1,0 +1,13 @@
+http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=20120101
+http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=fc03d957488a2e0c5055cb1f42ce574a&targetDt=20220626
+
+Q. 내가 연동할 API가 10개다?
+A. 그렇다면 Slice를 만들어 하나하나 테스트를 해야함
+
+백엔드에서 API규격서 만들기
+프론트는 API규격서를 갖고 리덕스 Slice를 만듦
+그동안 기획/디자인 파트에서 UI 디자인 (딜레이가 많이 되는 편)
+이를 단위테스트, 유닛테스트라 함
+
+테스트 하기 위한 프레임워크 = 제스트(jest react test) 
+

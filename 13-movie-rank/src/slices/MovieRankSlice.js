@@ -1,6 +1,6 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios';
-const API_URL = 'https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json';
+const API_URL = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json';
 const API_KEY = 'fc03d957488a2e0c5055cb1f42ce574a';
 
 export const getMovieRank = createAsyncThunk("MovieRankSlice/getMovieRank", async (payload, {rejectWithValue})=> {
@@ -40,7 +40,7 @@ const MovieRankSlice = createSlice({
     reducers: {},
     extraReducers: {
         [getMovieRank.pending]: (state, {payload}) => {
-            return {... state, loading: true}
+            return { ...state, loading: true }
         },
         [getMovieRank.fulfilled]: (state, {payload}) =>{
             return{

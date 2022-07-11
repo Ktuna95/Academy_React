@@ -35,11 +35,12 @@ const BarChartView = memo(({chartData}) => {
             }
         },
     };
-
+   
     /** chart에 표시될 데이터 (막대그래프용) */
     const data = {
         // x축에 나타날 항목들
         labels: chartData.movieNm,
+        
         //y축의 값을 비롯한 기타 옵션들
         datasets: [{
             //그래프 제목
@@ -57,7 +58,7 @@ const BarChartView = memo(({chartData}) => {
     );
 });
 
-BarChartView.defaultProps ={
+BarChartView.defaultProps = {
     chartData: {
         movieNm: [], audiCnt: []
     }
